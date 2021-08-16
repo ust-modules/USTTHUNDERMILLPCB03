@@ -321,6 +321,10 @@
     [
       "c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b",
       "tachometer"
+    ],
+    [
+      "f1d72f98-8869-41cc-b10e-5c93f9725bfa",
+      "CPU"
     ]
   ],
   "text_variables": {}

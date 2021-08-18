@@ -1,1 +1,7 @@
-*-backups/*
+# KiCAD backup
+*.bak
+*.bck
+*.kicad_pcb-bak
+*.sch-bak
+_saved_*
+**/*-backups/

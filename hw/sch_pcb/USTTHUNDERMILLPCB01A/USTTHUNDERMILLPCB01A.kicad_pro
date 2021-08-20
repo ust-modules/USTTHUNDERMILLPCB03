@@ -350,7 +350,7 @@
     "classes": [
       {
         "bus_width": 6.0,
-        "clearance": 1.0,
+        "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,

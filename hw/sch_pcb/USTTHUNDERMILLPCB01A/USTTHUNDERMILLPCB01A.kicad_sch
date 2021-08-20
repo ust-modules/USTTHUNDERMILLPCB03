@@ -1037,9 +1037,6 @@
     (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/2ba0188d-28c6-4c37-ba2e-96651f7ce1d6"
       (reference "#PWR019") (unit 1) (value "+3V3") (footprint "")
     )
-    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/a7ff9d2c-4b34-41b8-90bc-ca8cf0b43cb1"
-      (reference "#PWR020") (unit 1) (value "+3V3") (footprint "")
-    )
     (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/f728334b-f98b-4659-ad11-f39bf2cc099e"
       (reference "#PWR021") (unit 1) (value "GND") (footprint "")
     )
@@ -1117,9 +1114,6 @@
     )
     (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/9714e962-7c24-4ce5-97e5-ab917ad32a0f"
       (reference "J1") (unit 1) (value "SM04B-GHS-TB") (footprint "Connector_JST:JST_GH_SM04B-GHS-TB_1x04-1MP_P1.25mm_Horizontal")
-    )
-    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/a163a1fd-9267-40a0-8133-acfa5acf358f"
-      (reference "JP1") (unit 1) (value "SolderJumper_3_Bridged12") (footprint "Jumper:SolderJumper-3_P1.3mm_Bridged12_RoundedPad1.0x1.5mm")
     )
     (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/b7b561b0-d172-40d2-a858-644f3e16e07a"
       (reference "R4") (unit 1) (value "100R") (footprint "Resistor_SMD:R_0603_1608Metric")

@@ -45,7 +45,7 @@
         "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 0.09999999999999999
+          "min_clearance": 0.01
         }
       },
       "diff_pair_dimensions": [
@@ -376,7 +376,8 @@
         "microvia_drill": 0.1,
         "name": "Elektroda",
         "nets": [
-          "/STATOR"
+          "/STATOR",
+          "GND"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",

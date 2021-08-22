@@ -1278,13 +1278,13 @@
       (reference "C14") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/432cf12d-4a7c-4654-a87f-450e6f78128d"
-      (reference "C15") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0603_1608Metric")
+      (reference "C15") (unit 1) (value "x pF") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/45602b1c-9672-4377-9453-b3b4e87f0f0e"
       (reference "C16") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/9a9f3b9e-cd28-4501-b11a-f89aeae74e9a"
-      (reference "C17") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0603_1608Metric")
+      (reference "C17") (unit 1) (value "x pF") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/46a523d5-f18b-4906-9bfc-8da1b586e5dc"
       (reference "C18") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0603_1608Metric")

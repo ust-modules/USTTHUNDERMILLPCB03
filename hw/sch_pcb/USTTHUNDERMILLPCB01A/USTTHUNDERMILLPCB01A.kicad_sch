@@ -1382,11 +1382,11 @@
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/24529d8c-5e3f-4e94-aa1f-db1dcf48127f"
       (reference "#PWR0101") (unit 1) (value "GND") (footprint "")
     )
-    (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/15d4db8b-2807-4d91-b861-47ee9ffddfbd"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/9bb7bfdd-1666-4df1-8ac2-c499cbfd3ab8"
-      (reference "#PWR?") (unit 1) (value "+3V3") (footprint "")
+      (reference "#PWR0102") (unit 1) (value "+3V3") (footprint "")
+    )
+    (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/15d4db8b-2807-4d91-b861-47ee9ffddfbd"
+      (reference "#PWR0103") (unit 1) (value "GND") (footprint "")
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/0d7f9500-d88c-4d31-9b22-c38f725cd843"
       (reference "C11") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0603_1608Metric")
@@ -1446,7 +1446,7 @@
       (reference "J6") (unit 1) (value "SM06B-GHS-TB") (footprint "Connector_JST:JST_GH_SM06B-GHS-TB_1x06-1MP_P1.25mm_Horizontal")
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/0cde32ab-061f-4ecc-bf6c-d7b9c47305b4"
-      (reference "JP?") (unit 1) (value "SolderJumper_3_Bridged12") (footprint "Jumper:SolderJumper-3_P1.3mm_Bridged12_RoundedPad1.0x1.5mm")
+      (reference "JP1") (unit 1) (value "SolderJumper_3_Bridged12") (footprint "Jumper:SolderJumper-3_P1.3mm_Bridged12_RoundedPad1.0x1.5mm")
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/fefffef2-b902-4577-8ac1-b36192c7493b"
       (reference "L1") (unit 1) (value "10uH - LQH32CN100K23L") (footprint "Inductor_SMD:L_1210_3225Metric")

@@ -1,4 +1,4 @@
-(kicad_sch (version 20210621) (generator eeschema)
+(kicad_sch (version 20210406) (generator eeschema)
 
   (uuid f2e077b3-ffaa-4e71-88ac-5260338cbb38)
 
@@ -1139,6 +1139,7 @@
     )
   )
 
+
   (junction (at 27.94 172.085) (diameter 1.016) (color 0 0 0 0))
   (junction (at 35.56 172.085) (diameter 1.016) (color 0 0 0 0))
   (junction (at 47.625 172.085) (diameter 1.016) (color 0 0 0 0))
@@ -1473,10 +1474,6 @@
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 93fe2d9f-6b6b-4e4c-9c79-9e9edc99e8e5)
   )
-  (label "COUNT_1_PCFO" (at 114.935 93.345 180)
-    (effects (font (size 1.27 1.27)) (justify right bottom))
-    (uuid cae43ac1-6666-4e02-957a-98b8e8db6281)
-  )
   (label "SCL" (at 165.735 93.345 0)
     (effects (font (size 1.524 1.524)) (justify left bottom))
     (uuid efd17c8d-d449-434b-9015-f44d1f08e3ef)
@@ -1487,11 +1484,22 @@
   )
   (label "COUNT_1" (at 269.24 100.965 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid f15e34d1-1eef-4546-8640-82bc1ba8c61b)
+    (uuid c0877666-cc62-4ef9-9b62-bba7cfc2f69d)
   )
-  (label "COUNT_2" (at 269.875 51.435 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 433faf7d-c009-4bdb-90bc-fd3d13c3560b)
+
+  (global_label "COUNT_1_PCFO" (shape input) (at 114.935 93.345 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid e3835278-c108-4704-b8dd-2ff0ac4246c3)
+    (property "Intersheet References" "${INTERSHEET_REFS}" (id 0) (at 98.189 93.2656 0)
+      (effects (font (size 1.27 1.27)) (justify right) hide)
+    )
+  )
+  (global_label "COUNT_2" (shape input) (at 269.875 51.435 0) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify left))
+    (uuid 3079b9ac-c317-4357-85ae-da62f3f5c489)
+    (property "Intersheet References" "${INTERSHEET_REFS}" (id 0) (at 280.6943 51.3556 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
   )
 
   (symbol (lib_id "power:VCC") (at 89.535 169.545 0) (unit 1)

@@ -602,14 +602,6 @@
     (effects (font (size 1.524 1.524)) (justify left bottom))
     (uuid e85240bc-bdc3-4a90-a8e6-b090bed522d5)
   )
-  (label "STATOR" (at 85.09 82.55 180)
-    (effects (font (size 1.27 1.27)) (justify right bottom))
-    (uuid a9f9311a-bfea-4ceb-98b1-56cc297df9d0)
-  )
-  (label "ROTOR_GND" (at 85.09 88.265 180)
-    (effects (font (size 1.27 1.27)) (justify right bottom))
-    (uuid 86dcabda-1544-4774-8b9a-e216d9624be2)
-  )
   (label "REF_1V25" (at 106.045 69.215 180)
     (effects (font (size 1.524 1.524)) (justify right bottom))
     (uuid 28681e60-dfa2-4ab2-9299-ae522d943a18)
@@ -623,6 +615,20 @@
     (uuid 32f6475e-51b5-457f-9422-6248eb46948d)
   )
 
+  (global_label "STATOR" (shape input) (at 85.09 82.55 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid 82077ae5-153b-4a74-aff3-dcf43b860921)
+    (property "Intersheet References" "${INTERSHEET_REFS}" (id 0) (at 75.8431 82.4706 0)
+      (effects (font (size 1.27 1.27)) (justify right) hide)
+    )
+  )
+  (global_label "ROTOR_GND" (shape input) (at 85.09 88.265 180) (fields_autoplaced)
+    (effects (font (size 1.27 1.27)) (justify right))
+    (uuid 639c538a-8b33-4553-a252-95abcde0a47e)
+    (property "Intersheet References" "${INTERSHEET_REFS}" (id 0) (at 71.6702 88.1856 0)
+      (effects (font (size 1.27 1.27)) (justify right) hide)
+    )
+  )
   (global_label "PA0" (shape input) (at 167.64 85.09 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid f3eebb99-ca6c-4b4e-b1a6-161218d58e51)
@@ -1391,9 +1397,6 @@
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/24529d8c-5e3f-4e94-aa1f-db1dcf48127f"
       (reference "#PWR0101") (unit 1) (value "GND") (footprint "")
     )
-    (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/9bb7bfdd-1666-4df1-8ac2-c499cbfd3ab8"
-      (reference "#PWR0102") (unit 1) (value "+3V3") (footprint "")
-    )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/15d4db8b-2807-4d91-b861-47ee9ffddfbd"
       (reference "#PWR0103") (unit 1) (value "GND") (footprint "")
     )
@@ -1453,9 +1456,6 @@
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/ac617ace-fc91-4a3f-9522-53f78319858d"
       (reference "J6") (unit 1) (value "SM06B-GHS-TB") (footprint "Connector_JST:JST_GH_SM06B-GHS-TB_1x06-1MP_P1.25mm_Horizontal")
-    )
-    (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/0cde32ab-061f-4ecc-bf6c-d7b9c47305b4"
-      (reference "JP1") (unit 1) (value "SolderJumper_3_Bridged12") (footprint "Jumper:SolderJumper-3_P1.3mm_Bridged12_RoundedPad1.0x1.5mm")
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/fefffef2-b902-4577-8ac1-b36192c7493b"
       (reference "L1") (unit 1) (value "10uH - LQH32CN100K23L") (footprint "Inductor_SMD:L_1210_3225Metric")

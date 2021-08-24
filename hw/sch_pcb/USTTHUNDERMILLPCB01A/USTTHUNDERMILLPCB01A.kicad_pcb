@@ -3604,13 +3604,13 @@
 
   (footprint "MLAB_LOGA:UST" (layer "B.Cu")
     (tedit 0) (tstamp 8ae42a04-8da2-4f38-a048-d9e536897edc)
-    (at 166.878 93.98 180)
+    (at 173.775534 94.096071 -92.1)
     (attr through_hole)
-    (fp_text reference "G***" (at 0 0) (layer "B.SilkS") hide
+    (fp_text reference "G***" (at 0 0 87.9) (layer "B.SilkS") hide
       (effects (font (size 1.524 1.524) (thickness 0.3)) (justify mirror))
       (tstamp 92cd9aa5-cb5c-4ac4-97ad-056e0c9ef545)
     )
-    (fp_text value "LOGO" (at 0.75 0) (layer "B.SilkS") hide
+    (fp_text value "LOGO" (at 0.75 0 87.9) (layer "B.SilkS") hide
       (effects (font (size 1.524 1.524) (thickness 0.3)) (justify mirror))
       (tstamp 9428fdf7-56a4-45bd-aa00-7e9ab9ef7213)
     )

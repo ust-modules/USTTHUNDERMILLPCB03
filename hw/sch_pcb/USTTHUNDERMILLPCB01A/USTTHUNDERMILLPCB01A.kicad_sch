@@ -1208,6 +1208,12 @@
     (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/75269896-f267-433f-89d6-75933aa7c151"
       (reference "#PWR040") (unit 1) (value "+3V3") (footprint "")
     )
+    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/c277be9b-7443-45aa-8418-a566ce894047"
+      (reference "#PWR0104") (unit 1) (value "+3V3") (footprint "")
+    )
+    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/fc56c72d-6440-4852-81e0-93fe64198628"
+      (reference "#PWR0105") (unit 1) (value "GND") (footprint "")
+    )
     (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/b38b263b-8193-4a50-80d3-19612d7556ae"
       (reference "C6") (unit 1) (value "10uF") (footprint "Capacitor_SMD:C_0805_2012Metric")
     )
@@ -1222,6 +1228,9 @@
     )
     (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/6d77a398-ffa9-4342-8357-6176713591b6"
       (reference "C10") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0603_1608Metric")
+    )
+    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/68140450-0149-4117-8a60-1f40b44d3d3f"
+      (reference "C22") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
     (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/7f897e23-7058-4138-9de3-7efb2d294d7c"
       (reference "D2") (unit 1) (value "ZENER-6.2V") (footprint "Mlab_D:Diode-MiniMELF_Standard")

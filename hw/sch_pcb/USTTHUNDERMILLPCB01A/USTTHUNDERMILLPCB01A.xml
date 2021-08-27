@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>G:\UST_G\USTTHUNDERMILLPCB01\hw\sch_pcb\USTTHUNDERMILLPCB01A\USTTHUNDERMILLPCB01A.kicad_sch</source>
-    <date>24.08.2021 17:56:40</date>
+    <date>27.08.2021 7:26:06</date>
     <tool>Eeschema (5.99.0-10394-g2e15de97e0)</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -551,11 +551,14 @@
       <tstamps>15e40e12-86ee-4bf5-82f8-56e8439f35ca</tstamps>
     </comp>
     <comp ref="C15">
-      <value>x pF</value>
+      <value>15 pF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="UST_ID">5c70984812875079b91f8be4</field>
+      </fields>
       <libsource lib="DATALOGGER01A-rescue" part="C-device" description=""/>
       <property name="USD_ID" value=""/>
-      <property name="UST_ID" value=""/>
+      <property name="UST_ID" value="5c70984812875079b91f8be4"/>
       <property name="Sheetname" value="CPU"/>
       <property name="Sheetfile" value="CPU.kicad_sch"/>
       <sheetpath names="/CPU/" tstamps="/f1d72f98-8869-41cc-b10e-5c93f9725bfa/"/>
@@ -576,11 +579,14 @@
       <tstamps>45602b1c-9672-4377-9453-b3b4e87f0f0e</tstamps>
     </comp>
     <comp ref="C17">
-      <value>x pF</value>
+      <value>15 pF</value>
       <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="UST_ID">5c70984812875079b91f8be4</field>
+      </fields>
       <libsource lib="DATALOGGER01A-rescue" part="C-device" description=""/>
       <property name="USD_ID" value=""/>
-      <property name="UST_ID" value=""/>
+      <property name="UST_ID" value="5c70984812875079b91f8be4"/>
       <property name="Sheetname" value="CPU"/>
       <property name="Sheetfile" value="CPU.kicad_sch"/>
       <sheetpath names="/CPU/" tstamps="/f1d72f98-8869-41cc-b10e-5c93f9725bfa/"/>
@@ -671,36 +677,51 @@
       <tstamps>c147dbf1-bab5-4659-8a55-7af002272a45</tstamps>
     </comp>
     <comp ref="D3">
-      <value>RED</value>
+      <value>YELLOW</value>
       <footprint>LED_SMD:LED_0603_1608Metric</footprint>
       <datasheet>~</datasheet>
       <fields>
-        <field name="UST_ID">60d581db1287500165f859a2</field>
+        <field name="UST_ID">60d582a31287500165f859f8</field>
       </fields>
       <libsource lib="DATALOGGER01A-rescue" part="LED-device" description=""/>
       <property name="USD_ID" value=""/>
-      <property name="UST_ID" value="60d581db1287500165f859a2"/>
+      <property name="UST_ID" value="60d582a31287500165f859f8"/>
       <property name="Sheetname" value="CPU"/>
       <property name="Sheetfile" value="CPU.kicad_sch"/>
       <sheetpath names="/CPU/" tstamps="/f1d72f98-8869-41cc-b10e-5c93f9725bfa/"/>
       <tstamps>efe3e6e6-42e2-4b44-b6cf-8819a6593aca</tstamps>
     </comp>
     <comp ref="D4">
-      <value>RED</value>
+      <value>BLUE</value>
       <footprint>LED_SMD:LED_0603_1608Metric</footprint>
       <datasheet>~</datasheet>
       <fields>
-        <field name="UST_ID">60d581db1287500165f859a2</field>
+        <field name="UST_ID">60d582f21287500165f85a23</field>
       </fields>
       <libsource lib="DATALOGGER01A-rescue" part="LED-device" description=""/>
       <property name="USD_ID" value=""/>
-      <property name="UST_ID" value="60d581db1287500165f859a2"/>
+      <property name="UST_ID" value="60d582f21287500165f85a23"/>
       <property name="Sheetname" value="CPU"/>
       <property name="Sheetfile" value="CPU.kicad_sch"/>
       <sheetpath names="/CPU/" tstamps="/f1d72f98-8869-41cc-b10e-5c93f9725bfa/"/>
       <tstamps>5d1649c7-05c9-4e6f-82f5-4af8c83f9a87</tstamps>
     </comp>
     <comp ref="D5">
+      <value>GREEN</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <datasheet>~</datasheet>
+      <fields>
+        <field name="UST_ID">60d582331287500165f859d0</field>
+      </fields>
+      <libsource lib="DATALOGGER01A-rescue" part="LED-device" description=""/>
+      <property name="USD_ID" value=""/>
+      <property name="UST_ID" value="60d582331287500165f859d0"/>
+      <property name="Sheetname" value="CPU"/>
+      <property name="Sheetfile" value="CPU.kicad_sch"/>
+      <sheetpath names="/CPU/" tstamps="/f1d72f98-8869-41cc-b10e-5c93f9725bfa/"/>
+      <tstamps>8380f4d3-4a59-4ea4-80bd-4931fae0989e</tstamps>
+    </comp>
+    <comp ref="D6">
       <value>RED</value>
       <footprint>LED_SMD:LED_0603_1608Metric</footprint>
       <datasheet>~</datasheet>
@@ -713,7 +734,7 @@
       <property name="Sheetname" value="CPU"/>
       <property name="Sheetfile" value="CPU.kicad_sch"/>
       <sheetpath names="/CPU/" tstamps="/f1d72f98-8869-41cc-b10e-5c93f9725bfa/"/>
-      <tstamps>8380f4d3-4a59-4ea4-80bd-4931fae0989e</tstamps>
+      <tstamps>a5056612-6744-4532-b64b-95fd1a6f9437</tstamps>
     </comp>
     <comp ref="J4">
       <value>HEADER_2x03</value>
@@ -899,6 +920,20 @@
       <property name="Sheetfile" value="CPU.kicad_sch"/>
       <sheetpath names="/CPU/" tstamps="/f1d72f98-8869-41cc-b10e-5c93f9725bfa/"/>
       <tstamps>715e05f2-19f2-4635-b5ac-c1a03b8ac678</tstamps>
+    </comp>
+    <comp ref="R21">
+      <value>2k2</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric</footprint>
+      <fields>
+        <field name="UST_ID">5c70984512875079b91f895e</field>
+      </fields>
+      <libsource lib="DATALOGGER01A-rescue" part="R-device" description=""/>
+      <property name="USD_ID" value=""/>
+      <property name="UST_ID" value="5c70984512875079b91f895e"/>
+      <property name="Sheetname" value="CPU"/>
+      <property name="Sheetfile" value="CPU.kicad_sch"/>
+      <sheetpath names="/CPU/" tstamps="/f1d72f98-8869-41cc-b10e-5c93f9725bfa/"/>
+      <tstamps>e4198e5e-c89f-477e-946e-4262b67dcb4d</tstamps>
     </comp>
     <comp ref="SW1">
       <value>KMT031 NGJ LHS C&amp;K</value>
@@ -1495,6 +1530,7 @@
       <node ref="R12" pin="1" pintype="passive"/>
       <node ref="R13" pin="1" pintype="passive"/>
       <node ref="R14" pin="2" pintype="passive"/>
+      <node ref="R21" pin="2" pintype="passive"/>
       <node ref="R4" pin="2" pintype="passive"/>
       <node ref="R6" pin="1" pintype="passive"/>
       <node ref="R7" pin="1" pintype="passive"/>
@@ -1660,38 +1696,42 @@
       <node ref="D5" pin="2" pinfunction="A" pintype="passive"/>
       <node ref="R18" pin="1" pintype="passive"/>
     </net>
-    <net code="35" name="Net-(J5-Pad4)">
+    <net code="35" name="Net-(D6-Pad2)">
+      <node ref="D6" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R21" pin="1" pintype="passive"/>
+    </net>
+    <net code="36" name="Net-(J5-Pad4)">
       <node ref="J5" pin="4" pintype="input"/>
       <node ref="R19" pin="2" pintype="passive"/>
     </net>
-    <net code="36" name="Net-(J5-Pad5)">
+    <net code="37" name="Net-(J5-Pad5)">
       <node ref="J5" pin="5" pintype="input"/>
       <node ref="R20" pin="2" pintype="passive"/>
     </net>
-    <net code="37" name="Net-(J6-Pad2)">
+    <net code="38" name="Net-(J6-Pad2)">
       <node ref="J6" pin="2" pintype="input"/>
       <node ref="R16" pin="2" pintype="passive"/>
     </net>
-    <net code="38" name="Net-(J6-Pad3)">
+    <net code="39" name="Net-(J6-Pad3)">
       <node ref="J6" pin="3" pintype="input"/>
       <node ref="R17" pin="2" pintype="passive"/>
     </net>
-    <net code="39" name="Net-(R8-Pad2)">
+    <net code="40" name="Net-(R8-Pad2)">
       <node ref="R8" pin="2" pintype="passive"/>
       <node ref="U5" pin="3" pintype="passive"/>
     </net>
-    <net code="40" name="Net-(R9-Pad2)">
+    <net code="41" name="Net-(R9-Pad2)">
       <node ref="R9" pin="2" pintype="passive"/>
       <node ref="U6" pin="3" pintype="passive"/>
     </net>
-    <net code="41" name="PA0">
+    <net code="42" name="PA0">
       <node ref="C4" pin="2" pintype="passive"/>
       <node ref="J2" pin="2" pintype="input"/>
       <node ref="R3" pin="2" pintype="passive"/>
       <node ref="U2" pin="1" pintype="output"/>
       <node ref="U8" pin="37" pinfunction="(PCINT0/ADC0)PA0" pintype="bidirectional"/>
     </net>
-    <net code="42" name="PA1">
+    <net code="43" name="PA1">
       <node ref="C1" pin="1" pintype="passive"/>
       <node ref="C3" pin="2" pintype="passive"/>
       <node ref="R1" pin="1" pintype="passive"/>
@@ -1699,7 +1739,7 @@
       <node ref="U1" pin="2" pinfunction="Vout" pintype="power_out"/>
       <node ref="U8" pin="36" pinfunction="(PCINT1/ADC1)PA1" pintype="bidirectional"/>
     </net>
-    <net code="43" name="ROTOR_GND">
+    <net code="44" name="ROTOR_GND">
       <node ref="C1" pin="2" pintype="passive"/>
       <node ref="C10" pin="2" pintype="passive"/>
       <node ref="C11" pin="2" pintype="passive"/>
@@ -1727,6 +1767,7 @@
       <node ref="D3" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="D4" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="D5" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D6" pin="1" pinfunction="K" pintype="passive"/>
       <node ref="J1" pin="4" pintype="input"/>
       <node ref="J1" pin="MP" pintype="input"/>
       <node ref="J2" pin="1" pintype="input"/>
@@ -1763,61 +1804,61 @@
       <node ref="Y1" pin="2" pinfunction="2" pintype="passive"/>
       <node ref="Y1" pin="4" pinfunction="4" pintype="passive"/>
     </net>
-    <net code="44" name="STATOR">
+    <net code="45" name="STATOR">
       <node ref="C2" pin="1" pintype="passive"/>
     </net>
-    <net code="45" name="unconnected-(J6-Pad4)">
+    <net code="46" name="unconnected-(J6-Pad4)">
       <node ref="J6" pin="4" pintype="input+no_connect"/>
     </net>
-    <net code="46" name="unconnected-(J6-Pad5)">
+    <net code="47" name="unconnected-(J6-Pad5)">
       <node ref="J6" pin="5" pintype="input+no_connect"/>
     </net>
-    <net code="47" name="unconnected-(U3-Pad4)">
+    <net code="48" name="unconnected-(U3-Pad4)">
       <node ref="U3" pin="4" pinfunction="NC" pintype="no_connect"/>
     </net>
-    <net code="48" name="unconnected-(U4-Pad7)">
+    <net code="49" name="unconnected-(U4-Pad7)">
       <node ref="U4" pin="7" pinfunction="#INT" pintype="output+no_connect"/>
     </net>
-    <net code="49" name="unconnected-(U7-Pad3)">
+    <net code="50" name="unconnected-(U7-Pad3)">
       <node ref="U7" pin="3" pinfunction="ALERT" pintype="unspecified+no_connect"/>
     </net>
-    <net code="50" name="unconnected-(U7-Pad6)">
+    <net code="51" name="unconnected-(U7-Pad6)">
       <node ref="U7" pin="6" pinfunction="nRESET" pintype="unspecified+no_connect"/>
     </net>
-    <net code="51" name="unconnected-(U8-Pad21)">
+    <net code="52" name="unconnected-(U8-Pad21)">
       <node ref="U8" pin="21" pinfunction="(PCINT18/TCK)PC2" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="52" name="unconnected-(U8-Pad22)">
+    <net code="53" name="unconnected-(U8-Pad22)">
       <node ref="U8" pin="22" pinfunction="(PCINT19/TMS)PC3" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="53" name="unconnected-(U8-Pad25)">
+    <net code="54" name="unconnected-(U8-Pad25)">
       <node ref="U8" pin="25" pinfunction="(PCINT22/TOSC1)PC6" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="54" name="unconnected-(U8-Pad26)">
+    <net code="55" name="unconnected-(U8-Pad26)">
       <node ref="U8" pin="26" pinfunction="(PCINT23/TOSC2)PC7" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="55" name="unconnected-(U8-Pad30)">
+    <net code="56" name="unconnected-(U8-Pad30)">
       <node ref="U8" pin="30" pinfunction="(PCINT7/ADC7)PA7" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="56" name="unconnected-(U8-Pad31)">
+    <net code="57" name="unconnected-(U8-Pad31)">
       <node ref="U8" pin="31" pinfunction="(PCINT6/ADC6)PA6" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="57" name="unconnected-(U8-Pad32)">
+    <net code="58" name="unconnected-(U8-Pad32)">
       <node ref="U8" pin="32" pinfunction="(PCINT5/ADC5)PA5" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="58" name="unconnected-(U8-Pad33)">
+    <net code="59" name="unconnected-(U8-Pad33)">
       <node ref="U8" pin="33" pinfunction="(PCINT4/ADC4)PA4" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="59" name="unconnected-(U8-Pad34)">
+    <net code="60" name="unconnected-(U8-Pad34)">
       <node ref="U8" pin="34" pinfunction="(PCINT3/ADC3)PA3" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="60" name="unconnected-(U8-Pad35)">
+    <net code="61" name="unconnected-(U8-Pad35)">
       <node ref="U8" pin="35" pinfunction="(PCINT2/ADC2)PA2" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="61" name="unconnected-(U8-Pad43)">
+    <net code="62" name="unconnected-(U8-Pad43)">
       <node ref="U8" pin="43" pinfunction="(PCINT11/AIN1/OC0)PB3" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="62" name="unconnected-(U8-Pad44)">
+    <net code="63" name="unconnected-(U8-Pad44)">
       <node ref="U8" pin="44" pinfunction="(PCINT12/OC0B/~{SS})PB4" pintype="bidirectional+no_connect"/>
     </net>
   </nets>

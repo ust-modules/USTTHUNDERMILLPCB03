@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>G:\UST_G\USTTHUNDERMILLPCB01\hw\sch_pcb\USTTHUNDERMILLPCB01A\USTTHUNDERMILLPCB01A.kicad_sch</source>
-    <date>27.08.2021 7:26:06</date>
+    <date>27.08.2021 8:09:46</date>
     <tool>Eeschema (5.99.0-10394-g2e15de97e0)</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -146,7 +146,11 @@
     <comp ref="J2">
       <value>SM03B-GHS-TB</value>
       <footprint>Connector_JST:JST_GH_SM03B-GHS-TB_1x03-1MP_P1.25mm_Horizontal</footprint>
+      <fields>
+        <field name="UST_ID">612880e51287500165a978de</field>
+      </fields>
       <libsource lib="MLAB_CONNECTORS_JST" part="SM03B-GHS-TB" description=""/>
+      <property name="UST_ID" value="612880e51287500165a978de"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="USTTHUNDERMILLPCB01A.kicad_sch"/>
       <sheetpath names="/" tstamps="/"/>

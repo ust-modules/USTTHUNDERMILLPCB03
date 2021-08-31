@@ -33,7 +33,7 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.4,
+          "drill": 0.762,
           "height": 1.524,
           "width": 1.524
         },
@@ -45,7 +45,7 @@
         "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 0.0
+          "min_clearance": 1.0
         }
       },
       "diff_pair_dimensions": [
@@ -398,7 +398,7 @@
         "microvia_drill": 0.1,
         "name": "Elektroda",
         "nets": [
-          "STATOR"
+          "/STATOR"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
@@ -409,7 +409,7 @@
       }
     ],
     "meta": {
-      "version": 0
+      "version": 1
     },
     "net_colors": null
   },

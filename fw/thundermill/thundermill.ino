@@ -75,12 +75,6 @@ boolean SDClass::begin(uint32_t clock, uint8_t csPin) {
 #define COUNT1_PCFO  0  //PB0       
 #define COUNT2  20  //PC4         
 
-
-#define CHANNELS 512    // number of channels in buffer for histogram, including negative numbers
-#define GPSerror 700000 // number of cycles for waitig for GPS in case of GPS error 
-#define GPSdelay 2700   // number of measurements between obtaining GPS position
-                        // 2700 = cca 12 h
-
 uint16_t count = 0;
 uint32_t serialhash = 0;
 //uint16_t offset, base_offset;
@@ -140,7 +134,7 @@ void setup()
   Wire.setClock(100000);
 
   // Open serial communications
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial1.begin(9600);
 
   Serial.println("#Cvak...");
@@ -154,9 +148,9 @@ void setup()
   }
 
   ADMUX = (analog_reference << 6) | ((PIN | 0x10) & 0x1F);  
-  ADCSRB = 0;               // Switching ADC to Free Running mode
-  sbi(ADCSRA, ADATE);       // ADC autotrigger enable (mandatory for free running mode)
-  sbi(ADCSRA, ADSC);        // ADC start the first conversions
+  //ADCSRB = 0;               // Switching ADC to Free Running mode
+  //sbi(ADCSRA, ADATE);       // ADC autotrigger enable (mandatory for free running mode)
+  //sbi(ADCSRA, ADSC);        // ADC start the first conversions
   sbi(ADCSRA, 2);           // 0x100 = clock divided by 16, 1 MHz, 13 us for 13 cycles of one AD conversion, 24 us fo 1.5 cycle for sample-hold
   cbi(ADCSRA, 1);        
   cbi(ADCSRA, 0);        
@@ -197,17 +191,34 @@ void setup()
   }
 }
 
+#define DECIMATION 1
+
 void loop()
 {
   int16_t buffer[RANGE];       // buffer for histogram
 
+  int n=0;
+  
   while (true)
   {
+    int16_t sensor;
+
     if (digitalRead(COUNT1_PCFO)) {digitalWrite(LED1, HIGH);} else {digitalWrite(LED1, LOW);};
     if (digitalRead(COUNT2))
-    { 
+    {
+ 
       digitalWrite(LED2, !digitalRead(LED2));
-      while (digitalRead(COUNT1_PCFO)); 
+      while (digitalRead(COUNT1_PCFO)); // wait for RPM hole
+
+      sbi(ADCSRA, ADSC);        // ADC start conversions
+      while (bit_is_clear(ADCSRA, ADIF)); // wait for end of conversion 
+      lo = ADCL;
+      hi = ADCH;
+      sbi(ADCSRA, ADIF);            // reset interrupt flag from ADC
+      sensor = (hi << 8) | lo;      // combine the two bytes
+      if (bitRead(sensor,9)) sensor = -1*(1024-sensor);
+      //buffer[n++] = sensor;
+      Serial.println(sensor);
     }
   };
 

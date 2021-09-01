@@ -1,14 +1,9 @@
-#define DEBUG // Please comment it if you are not debugging
-String githash = "51832f3";
-String FWversion = "TM";
-#define ZERO 256  // ADC DC offset
-#define RANGE 1000   // histogram range
-#define EVENTS 500 // maximal number of recorded events
+#define RANGE 128   // size of output buffer
 
 // Compiled with: Arduino 1.8.13
 
 /*
-  AORDOS_C for GeoDos
+  THUNDERMILL
 
 ISP
 ---
@@ -72,10 +67,9 @@ boolean SDClass::begin(uint32_t clock, uint8_t csPin) {
 #define LED1  13  //PD5         
 #define LED2  14  //PD6         
 #define LED3  15  //PD7         
-#define COUNT1_PCFO  0  //PB0       
+#define COUNT1_PCFO  27  //PA3       
 #define COUNT2  20  //PC4         
 
-uint16_t count = 0;
 uint32_t serialhash = 0;
 //uint16_t offset, base_offset;
 uint8_t lo, hi;
@@ -101,20 +95,8 @@ uint16_t u_sensor, maximum;
 //  14  | A14     | A9      | 1x
 //  15  | A15     | A9      | 1x
 #define PIN 0
-uint8_t analog_reference = INTERNAL2V56; // DEFAULT, INTERNAL, INTERNAL1V1, INTERNAL2V56, or EXTERNAL
+//!!!uint8_t analog_reference = INTERNAL2V56; // DEFAULT, INTERNAL, INTERNAL1V1, INTERNAL2V56, or EXTERNAL
 
-uint8_t bcdToDec(uint8_t b)
-{
-  return ( ((b >> 4)*10) + (b%16) );
-}
-
-void waitForSerial()
-{
-  while(Serial.available()) Serial.read();
-  while (!Serial.available());
-  while(Serial.available()) Serial.read();
-}
-  
 void setup()
 {
   pinMode(LED1, OUTPUT);
@@ -146,20 +128,29 @@ void setup()
     digitalWrite(LED2, HIGH);  
     delay(100);
   }
-
+/*
   ADMUX = (analog_reference << 6) | ((PIN | 0x10) & 0x1F);  
   //ADCSRB = 0;               // Switching ADC to Free Running mode
   //sbi(ADCSRA, ADATE);       // ADC autotrigger enable (mandatory for free running mode)
   //sbi(ADCSRA, ADSC);        // ADC start the first conversions
   sbi(ADCSRA, 2);           // 0x100 = clock divided by 16, 1 MHz, 13 us for 13 cycles of one AD conversion, 24 us fo 1.5 cycle for sample-hold
   cbi(ADCSRA, 1);        
-  cbi(ADCSRA, 0);        
-
+  cbi(ADCSRA, 0);  
+*/        
+/*!!!!!!!!!!!!!
+  ADMUX = (analog_reference << 6) | ((PIN | 0x10) & 0x1F);
   
+  ADCSRB = 0;               // Switching ADC to Free Running mode
+  sbi(ADCSRA, ADATE);       // ADC autotrigger enable (mandatory for free running mode)
+  sbi(ADCSRA, ADSC);        // ADC start the first conversions
+  sbi(ADCSRA, 2);           // 0x100 = clock divided by 16, 1 MHz, 13 us for 13 cycles of one AD conversion, 24 us fo 1.5 cycle for sample-hold
+  cbi(ADCSRA, 1);        
+  cbi(ADCSRA, 0);  
+*/  
   Serial.println("#Hmmm...");
 
   // make a string for device identification output
-  String dataString = "$AIRDOS," + FWversion + "," + githash + ","; // FW version and Git hash
+  String dataString = "$FIELDMILL," ; // FW version and Git hash
 
   if (digitalRead(17)) // Protection against sensor mallfunction 
   {
@@ -191,59 +182,22 @@ void setup()
   }
 }
 
-#define DECIMATION 1
+uint16_t buffer[RANGE];       // buffer for histogram
+uint8_t count = 0;
 
 void loop()
 {
-  int16_t buffer[RANGE];       // buffer for histogram
-
-  int n=0;
-  
-  while (true)
+  for (uint8_t n=0; n<(RANGE-2); n++)
   {
-    int16_t sensor;
+    uint8_t sensor;
 
-    if (digitalRead(COUNT1_PCFO)) {digitalWrite(LED1, HIGH);} else {digitalWrite(LED1, LOW);};
-    if (digitalRead(COUNT2))
+    digitalWrite(LED1, digitalRead(COUNT1_PCFO));
+    if (!digitalRead(COUNT2))
     {
- 
+      count++;
       digitalWrite(LED2, !digitalRead(LED2));
-      while (digitalRead(COUNT1_PCFO)); // wait for RPM hole
-
-      sbi(ADCSRA, ADSC);        // ADC start conversions
-      while (bit_is_clear(ADCSRA, ADIF)); // wait for end of conversion 
-      lo = ADCL;
-      hi = ADCH;
-      sbi(ADCSRA, ADIF);            // reset interrupt flag from ADC
-      sensor = (hi << 8) | lo;      // combine the two bytes
-      if (bitRead(sensor,9)) sensor = -1*(1024-sensor);
-      //buffer[n++] = sensor;
-      Serial.println(sensor);
-    }
-  };
-
-  //for(uint16_t i=0; i<(GPSdelay); i++)  // measurements between GPS aquisition
-  {
-    for(int n=0; n<RANGE; n++) // clear histogram
-    {
-      buffer[n]=0;
-    }
-
-    uint16_t hit_count = 0;
-
-    // dosimeter integration
-    for (uint32_t i=0; i<RANGE; i++)    
-    {
-      int16_t sensor;
-      
-      wdt_reset(); //Reset WDT
-
-      while (bit_is_clear(ADCSRA, ADIF)); // wait for end of conversion 
-      delayMicroseconds(8); // wait for 1.5 cycle of ADC clock for sample/hold for next conversion
-      DDRB = 0b10011111;                  // Reset peak detector
-      delayMicroseconds(2);              
-      DDRB = 0b10011110;
-  
+/*
+      while (bit_is_clear(ADCSRA, ADIF)); // wait for end of conversion   
       // we have to read ADCL first; doing so locks both ADCL
       // and ADCH until ADCH is read.  reading ADCL second would
       // cause the results of each conversion to be discarded,
@@ -251,40 +205,51 @@ void loop()
       lo = ADCL;
       hi = ADCH;
       sbi(ADCSRA, ADIF);                  // reset interrupt flag from ADC
-  
-      // combine the two bytes
-      //u_sensor = (hi << 7) | (lo >> 1);
-      sensor = (hi << 8) | lo;
-      if (bitRead(sensor,9)) sensor = -1*(1024-sensor);
-      // manage negative values
-      //if (u_sensor <= (CHANNELS/2)-1 ) {u_sensor += (CHANNELS/2);} else {u_sensor -= (CHANNELS/2);}
-
-      //if (u_sensor < ZERO) {u_sensor = 0;} else {u_sensor -= ZERO;}
-      
-      buffer[i] = u_sensor;
-      Serial.println(sensor); 
-      delay(100);
-    
-    }  
-    
-    // Data out
-    // Histogram out
-    if (false)
-    {
-      int16_t max=0;
-      int16_t min=1023;
-
-      for(int n=0; n<RANGE; n++)  
+*/
+      int16_t ble = analogRead(A0);
+/*
+      sbi(ADCSRA, ADSC);        // ADC start conversions
+      while (bit_is_set(ADCSRA, ADSC)); // wait for end of conversion 
+      //while (bit_is_clear(ADCSRA, ADIF)); // wait for end of conversion 
+      lo = ADCL;
+      hi = ADCH;
+      sbi(ADCSRA, ADIF);            // reset interrupt flag from ADC
+*/
+      sensor = (bitRead(hi,0) << 7) | (lo >> 1);      // combine the two bytes
+      if (!bitRead(hi,1)) 
       {
-        if (buffer[n]>max) max=buffer[n];
-        if (buffer[n]<min) min=buffer[n];
+        sensor = 128+sensor; 
       }
-       
-      digitalWrite(LED1, HIGH);  // Blink for Dasa
-      Serial.print(min); 
-      Serial.print(","); 
-      Serial.println(max); 
-      digitalWrite(LED1, LOW);                
-    }    
+      else
+      {
+        sensor = 128-(255-sensor); 
+      }
+      
+      buffer[n] = sensor;
+
+      //Serial.print(uint8_t(n));
+      //Serial.print(',');
+      //Serial.println(uint8_t(sensor));
+      //Serial.println(ble);
+      buffer[n] = ble;
+      //buffer[n] = analogRead(0)>>2;
+
+      while(!digitalRead(COUNT2)) digitalWrite(LED1, digitalRead(COUNT1_PCFO));
+
+    }
+  }
+  if (count > RANGE)
+  {
+    digitalWrite(LED3, !digitalRead(LED3));
+    count = 0;
+
+    for (uint8_t n=0; n<(RANGE-2); n++)
+    {
+      //Serial.print(uint8_t(n));
+      //Serial.print(',');
+      //Serial.println(uint8_t(sensor));
+      Serial.println(buffer[n]);
+    }  
+
   }
 }

@@ -69,6 +69,8 @@ boolean SDClass::begin(uint32_t clock, uint8_t csPin) {
 #define LED3  15  //PD7         
 #define COUNT1_PCFO  27  //PA3       
 #define COUNT2  20  //PC4         
+#define TIMEPULSE  12  //PD4         
+#define EXTINT  2  //PB2         
 
 uint32_t serialhash = 0;
 //uint16_t offset, base_offset;
@@ -95,7 +97,7 @@ uint16_t u_sensor, maximum;
 //  14  | A14     | A9      | 1x
 //  15  | A15     | A9      | 1x
 #define PIN 0
-//!!!uint8_t analog_reference = INTERNAL2V56; // DEFAULT, INTERNAL, INTERNAL1V1, INTERNAL2V56, or EXTERNAL
+uint8_t analog_reference = INTERNAL2V56; // DEFAULT, INTERNAL, INTERNAL1V1, INTERNAL2V56, or EXTERNAL
 
 void setup()
 {
@@ -104,6 +106,11 @@ void setup()
   pinMode(LED3, OUTPUT);
   pinMode(COUNT1_PCFO, INPUT);
   pinMode(COUNT2, INPUT);
+
+  pinMode(EXTINT, OUTPUT);
+  pinMode(TIMEPULSE, OUTPUT);
+  digitalWrite(EXTINT, LOW);  
+  digitalWrite(TIMEPULSE, LOW);  
 
   for(int i=0; i<3; i++)  
   {
@@ -137,16 +144,15 @@ void setup()
   cbi(ADCSRA, 1);        
   cbi(ADCSRA, 0);  
 */        
-/*!!!!!!!!!!!!!
   ADMUX = (analog_reference << 6) | ((PIN | 0x10) & 0x1F);
   
-  ADCSRB = 0;               // Switching ADC to Free Running mode
-  sbi(ADCSRA, ADATE);       // ADC autotrigger enable (mandatory for free running mode)
-  sbi(ADCSRA, ADSC);        // ADC start the first conversions
+  ADCSRB = 1;               // Switching ADC to One time read
+  //sbi(ADCSRA, ADATE);       // ADC autotrigger enable (mandatory for free running mode)
+  //sbi(ADCSRA, ADSC);        // ADC start the first conversions
   sbi(ADCSRA, 2);           // 0x100 = clock divided by 16, 1 MHz, 13 us for 13 cycles of one AD conversion, 24 us fo 1.5 cycle for sample-hold
   cbi(ADCSRA, 1);        
   cbi(ADCSRA, 0);  
-*/  
+
   Serial.println("#Hmmm...");
 
   // make a string for device identification output
@@ -182,39 +188,31 @@ void setup()
   }
 }
 
-uint16_t buffer[RANGE];       // buffer for histogram
-uint8_t count = 0;
+uint8_t buffer[RANGE];       // buffer for histogram
+uint8_t count;
 
 void loop()
 {
-  for (uint8_t n=0; n<(RANGE-2); n++)
+  count = 0;
+  
+  while(true)
   {
     uint8_t sensor;
 
     digitalWrite(LED1, digitalRead(COUNT1_PCFO));
     if (!digitalRead(COUNT2))
     {
-      count++;
-      digitalWrite(LED2, !digitalRead(LED2));
-/*
-      while (bit_is_clear(ADCSRA, ADIF)); // wait for end of conversion   
-      // we have to read ADCL first; doing so locks both ADCL
-      // and ADCH until ADCH is read.  reading ADCL second would
-      // cause the results of each conversion to be discarded,
-      // as ADCL and ADCH would be locked when it completed.
-      lo = ADCL;
-      hi = ADCH;
-      sbi(ADCSRA, ADIF);                  // reset interrupt flag from ADC
-*/
-      int16_t ble = analogRead(A0);
-/*
       sbi(ADCSRA, ADSC);        // ADC start conversions
       while (bit_is_set(ADCSRA, ADSC)); // wait for end of conversion 
       //while (bit_is_clear(ADCSRA, ADIF)); // wait for end of conversion 
       lo = ADCL;
       hi = ADCH;
-      sbi(ADCSRA, ADIF);            // reset interrupt flag from ADC
-*/
+      //sbi(ADCSRA, ADIF);            // reset interrupt flag from ADC
+
+      digitalWrite(LED2, !digitalRead(LED2));
+      digitalWrite(TIMEPULSE, HIGH);
+      digitalWrite(TIMEPULSE, LOW);
+
       sensor = (bitRead(hi,0) << 7) | (lo >> 1);      // combine the two bytes
       if (!bitRead(hi,1)) 
       {
@@ -225,31 +223,29 @@ void loop()
         sensor = 128-(255-sensor); 
       }
       
-      buffer[n] = sensor;
+      buffer[count++] = sensor;
+      if (count==100) break;
 
       //Serial.print(uint8_t(n));
       //Serial.print(',');
       //Serial.println(uint8_t(sensor));
       //Serial.println(ble);
-      buffer[n] = ble;
       //buffer[n] = analogRead(0)>>2;
-
+      //Serial.println(sensor);
       while(!digitalRead(COUNT2)) digitalWrite(LED1, digitalRead(COUNT1_PCFO));
+
+      digitalWrite(EXTINT, HIGH);
+      digitalWrite(EXTINT, LOW);
 
     }
   }
-  if (count > RANGE)
+  digitalWrite(LED3, !digitalRead(LED3));
+
+  for (uint8_t n=1; n<count; n++)
   {
-    digitalWrite(LED3, !digitalRead(LED3));
-    count = 0;
-
-    for (uint8_t n=0; n<(RANGE-2); n++)
-    {
-      //Serial.print(uint8_t(n));
-      //Serial.print(',');
-      //Serial.println(uint8_t(sensor));
-      Serial.println(buffer[n]);
-    }  
-
-  }
+    //Serial.print(uint8_t(n));
+    //Serial.print(',');
+    //Serial.println(uint8_t(sensor));
+    Serial.println(buffer[n]);
+  }  
 }

@@ -214,7 +214,7 @@ void loop()
 
   buffer[5] = count-6; // number of half-turns
 
-  mav.SendTunnelData(buffer, sizeof(buffer), 2, 0, 0);  
+  mav.SendTunnelData(buffer, sizeof(buffer), 3, 0, 0);  
 
   heart++;
   if (heart == 2) 

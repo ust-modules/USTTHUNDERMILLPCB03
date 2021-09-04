@@ -1,5 +1,3 @@
-#define RANGE 128   // size of output buffer
-
 // Compiled with: Arduino 1.8.13
 
 /*
@@ -15,7 +13,6 @@ ANALOG
 ------
 +      A0  PA0
 -      A1  PA1
-RESET  0   PB0
 
 LED
 ---
@@ -50,30 +47,22 @@ TX1/INT1 (D 11) PD3 17|        |24 PC2 (D 18) TCK
                       +--------+
 */
 
-/*
-// Compiled with: Arduino 1.8.9
-// MightyCore 2.0.2 https://mcudude.github.io/MightyCore/package_MCUdude_MightyCore_index.json
-Fix old bug in Mighty SD library
-~/.arduino15/packages/MightyCore/hardware/avr/2.0.2/libraries/SD/src/SD.cpp:
-boolean SDClass::begin(uint32_t clock, uint8_t csPin) {
-  if(root.isOpen()) root.close();
-*/
+#define RANGE 128   // size of output buffer
 
-#include <SD.h>             // Revised version from MightyCore
 #include "wiring_private.h"
 #include <Wire.h>           
-#include <avr/wdt.h>
+#include "ArduinoMavlink.h"
+#include "SHT31.h"
 
-#define LED1  13  //PD5         
-#define LED2  14  //PD6         
-#define LED3  15  //PD7         
-#define COUNT1_PCFO  27  //PA3       
-#define COUNT2  20  //PC4         
-#define TIMEPULSE  12  //PD4         
-#define EXTINT  2  //PB2         
+#define LED1  13      //PD5         
+#define LED2  14      //PD6         
+#define LED3  15      //PD7         
+#define COUNT1  27    //PA3       
+#define COUNT2  20    //PC4         
+#define TIMEPULSE  12 //PD4         
+#define EXTINT  2     //PB2         
 
 uint32_t serialhash = 0;
-//uint16_t offset, base_offset;
 uint8_t lo, hi;
 uint16_t u_sensor, maximum;
 
@@ -99,18 +88,26 @@ uint16_t u_sensor, maximum;
 #define PIN 0
 uint8_t analog_reference = INTERNAL2V56; // DEFAULT, INTERNAL, INTERNAL1V1, INTERNAL2V56, or EXTERNAL
 
+SHT31 sht;                    // SHT reference
+ArduinoMavlink mav(Serial);   // Mavlink reference
+
 void setup()
 {
   pinMode(LED1, OUTPUT);
   pinMode(LED2, OUTPUT);
   pinMode(LED3, OUTPUT);
-  pinMode(COUNT1_PCFO, INPUT);
+  pinMode(COUNT1, INPUT);
   pinMode(COUNT2, INPUT);
+  pinMode(TIMEPULSE, INPUT);
 
+/*  debug output for oscilloscope
+ *   
   pinMode(EXTINT, OUTPUT);
-  pinMode(TIMEPULSE, OUTPUT);
   digitalWrite(EXTINT, LOW);  
-  digitalWrite(TIMEPULSE, LOW);  
+
+  digitalWrite(EXTINT, HIGH);
+  digitalWrite(EXTINT, LOW);
+*/
 
   for(int i=0; i<3; i++)  
   {
@@ -123,10 +120,12 @@ void setup()
   Wire.setClock(100000);
 
   // Open serial communications
-  Serial.begin(115200);
-  Serial1.begin(9600);
+  Serial.begin(57600);
 
-  Serial.println("#Cvak...");
+  sht.begin(0x44, &Wire);    //Sensor I2C Address
+  sht.heatOff();
+  sht.reset();
+  sht.clearStatus();
 
   for(int i=0; i<3; i++)  
   {
@@ -135,49 +134,13 @@ void setup()
     digitalWrite(LED2, HIGH);  
     delay(100);
   }
-/*
-  ADMUX = (analog_reference << 6) | ((PIN | 0x10) & 0x1F);  
-  //ADCSRB = 0;               // Switching ADC to Free Running mode
-  //sbi(ADCSRA, ADATE);       // ADC autotrigger enable (mandatory for free running mode)
-  //sbi(ADCSRA, ADSC);        // ADC start the first conversions
-  sbi(ADCSRA, 2);           // 0x100 = clock divided by 16, 1 MHz, 13 us for 13 cycles of one AD conversion, 24 us fo 1.5 cycle for sample-hold
-  cbi(ADCSRA, 1);        
-  cbi(ADCSRA, 0);  
-*/        
+
   ADMUX = (analog_reference << 6) | ((PIN | 0x10) & 0x1F);
   
   ADCSRB = 1;               // Switching ADC to One time read
-  //sbi(ADCSRA, ADATE);       // ADC autotrigger enable (mandatory for free running mode)
-  //sbi(ADCSRA, ADSC);        // ADC start the first conversions
-  sbi(ADCSRA, 2);           // 0x100 = clock divided by 16, 1 MHz, 13 us for 13 cycles of one AD conversion, 24 us fo 1.5 cycle for sample-hold
+  sbi(ADCSRA, 2);           // 0x100 = clock divided by 16
   cbi(ADCSRA, 1);        
   cbi(ADCSRA, 0);  
-
-  Serial.println("#Hmmm...");
-
-  // make a string for device identification output
-  String dataString = "$FIELDMILL," ; // FW version and Git hash
-
-  if (digitalRead(17)) // Protection against sensor mallfunction 
-  {
-    Wire.beginTransmission(0x58);                   // request SN from EEPROM
-    Wire.write((int)0x08); // MSB
-    Wire.write((int)0x00); // LSB
-    Wire.endTransmission();
-    Wire.requestFrom((uint8_t)0x58, (uint8_t)16);    
-    for (int8_t reg=0; reg<16; reg++)
-    { 
-      uint8_t serialbyte = Wire.read(); // receive a byte
-      if (serialbyte<0x10) dataString += "0";
-      dataString += String(serialbyte,HEX);    
-      serialhash += serialbyte;
-    }
-  }
-  else
-  {
-    dataString += "NaN";    
-  }
-
 
   for(int i=0; i<3; i++)  
   {
@@ -189,17 +152,22 @@ void setup()
 }
 
 uint8_t buffer[RANGE];       // buffer for histogram
-uint8_t count;
+uint8_t count;        // counter of half turns of mill
+uint8_t loop_c = 0;   // counter of mavlink packets
+boolean edge = true;  // helper variable for rasing edge of half turn
+uint8_t heart = 0; // heartbeat
 
 void loop()
 {
-  count = 0;
+  count = 5;
   
   while(true)
   {
     uint8_t sensor;
 
-    digitalWrite(LED1, digitalRead(COUNT1_PCFO));
+    if (!digitalRead(TIMEPULSE)) edge=true;
+
+    digitalWrite(LED1, digitalRead(COUNT1));
     if (!digitalRead(COUNT2))
     {
       sbi(ADCSRA, ADSC);        // ADC start conversions
@@ -224,28 +192,34 @@ void loop()
       }
       
       buffer[count++] = sensor;
-      if (count==100) break;
+      if (digitalRead(TIMEPULSE)&(edge==true)) break; // waiting for GPS TIMEPULSE
+      if ((count==RANGE)&(edge==true)) break; // in case no FIX
 
-      //Serial.print(uint8_t(n));
-      //Serial.print(',');
-      //Serial.println(uint8_t(sensor));
-      //Serial.println(ble);
-      //buffer[n] = analogRead(0)>>2;
       //Serial.println(sensor);
-      while(!digitalRead(COUNT2)) digitalWrite(LED1, digitalRead(COUNT1_PCFO));
-
-      digitalWrite(EXTINT, HIGH);
-      digitalWrite(EXTINT, LOW);
-
+      while(!digitalRead(COUNT2)) digitalWrite(LED1, digitalRead(COUNT1));
     }
   }
+  edge=false;
   digitalWrite(LED3, !digitalRead(LED3));
+  float temp,hum;
+  sht.read();
+  temp = sht.getTemperature();
+  hum = sht.getHumidity();
+      
+  buffer[0] = (int) loop_c++;
+  buffer[1] = (int) temp;
+  buffer[2] = (int) ((temp - (int)temp)*100);
+  buffer[3] = (int) hum;
+  buffer[4] = (int) ((hum - (int)hum)*100);
 
-  for (uint8_t n=1; n<count; n++)
+  buffer[5] = count;
+
+  mav.SendTunnelData(buffer, sizeof(buffer), 2, 1, 1);  
+
+  heart++;
+  if (heart == 2) 
   {
-    //Serial.print(uint8_t(n));
-    //Serial.print(',');
-    //Serial.println(uint8_t(sensor));
-    Serial.println(buffer[n]);
-  }  
+    mav.SendHeartBeat();
+    heart = 0;
+  }
 }

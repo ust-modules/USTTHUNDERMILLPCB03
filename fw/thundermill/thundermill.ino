@@ -195,7 +195,7 @@ void loop()
       if (digitalRead(TIMEPULSE)&(edge==true)) break; // waiting for GPS TIMEPULSE
       if ((count==RANGE)&(edge==true)) break; // in case no FIX
 
-      //Serial.println(sensor);
+      //Serial.println(sensor);   // debug
       while(!digitalRead(COUNT2)) digitalWrite(LED1, digitalRead(COUNT1));
     }
   }
@@ -206,15 +206,15 @@ void loop()
   temp = sht.getTemperature();
   hum = sht.getHumidity();
       
-  buffer[0] = (int) loop_c++;
-  buffer[1] = (int) temp;
+  buffer[0] = (int) loop_c++; // packet counter
+  buffer[1] = (int) temp;                       // temperature
   buffer[2] = (int) ((temp - (int)temp)*100);
-  buffer[3] = (int) hum;
+  buffer[3] = (int) hum;                        // humidity
   buffer[4] = (int) ((hum - (int)hum)*100);
 
-  buffer[5] = count;
+  buffer[5] = count-6; // number of half-turns
 
-  mav.SendTunnelData(buffer, sizeof(buffer), 2, 1, 1);  
+  mav.SendTunnelData(buffer, sizeof(buffer), 2, 0, 0);  
 
   heart++;
   if (heart == 2) 

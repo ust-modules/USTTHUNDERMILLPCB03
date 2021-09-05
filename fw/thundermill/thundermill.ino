@@ -199,8 +199,6 @@ void loop()
       //sbi(ADCSRA, ADIF);            // reset interrupt flag from ADC
 
       digitalWrite(LED2, !digitalRead(LED2));
-      digitalWrite(TIMEPULSE, HIGH);
-      digitalWrite(TIMEPULSE, LOW);
 
       sensor = (bitRead(hi,0) << 7) | (lo >> 1);      // combine the two bytes
       if (!bitRead(hi,1)) 
@@ -214,7 +212,7 @@ void loop()
       
       buffer[count++] = sensor;
       if (digitalRead(TIMEPULSE)&(edge==true)) break; // waiting for GPS TIMEPULSE
-      if ((count==RANGE)&(edge==true)) break; // in case no FIX
+      if ((count==RANGE)) break; // in case no FIX
 
       //Serial.println(sensor);   // debug
       while(!digitalRead(COUNT2)) counter();
@@ -233,11 +231,11 @@ void loop()
   buffer[3] = (int) hum;                        // humidity
   buffer[4] = (int) ((hum - (int)hum)*100);
 
-  buffer[5] = count-6; // number of half-turns
-
-  buffer[6] = highByte(CPS); // RPM in counts per second
-  buffer[7] = lowByte(CPS); 
+  buffer[5] = highByte(CPS); // RPM in counts per second
+  buffer[6] = lowByte(CPS); 
   CPS = 0;
+
+  buffer[7] = count-8; // number of half-turns
   
   mav.SendTunnelData(buffer, sizeof(buffer), 3, 0, 0);  
 

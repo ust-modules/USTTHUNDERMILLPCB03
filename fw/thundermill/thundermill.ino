@@ -91,6 +91,27 @@ uint8_t analog_reference = INTERNAL2V56; // DEFAULT, INTERNAL, INTERNAL1V1, INTE
 SHT31 sht;                    // SHT reference
 ArduinoMavlink mav(Serial);   // Mavlink reference
 
+inline void counter() __attribute__((always_inline));
+
+uint16_t CPS = 0;     // RPM
+boolean flipflop = false; 
+
+void counter()
+{
+  if (digitalRead(COUNT1)& flipflop)
+  {
+    digitalWrite(LED1,HIGH);
+    flipflop=false;
+    CPS++;
+  };
+  if (!digitalRead(COUNT1)& !flipflop)
+  {
+    digitalWrite(LED1,LOW);
+    flipflop=true;
+  };  
+}
+
+
 void setup()
 {
   pinMode(LED1, OUTPUT);
@@ -155,11 +176,11 @@ uint8_t buffer[RANGE];       // buffer for histogram
 uint8_t count;        // counter of half turns of mill
 uint8_t loop_c = 0;   // counter of mavlink packets
 boolean edge = true;  // helper variable for rasing edge of half turn
-uint8_t heart = 0; // heartbeat
+uint8_t heart = 0;    // heartbeat
 
 void loop()
 {
-  count = 5;
+  count = 7;
   
   while(true)
   {
@@ -167,7 +188,7 @@ void loop()
 
     if (!digitalRead(TIMEPULSE)) edge=true;
 
-    digitalWrite(LED1, digitalRead(COUNT1));
+    counter();
     if (!digitalRead(COUNT2))
     {
       sbi(ADCSRA, ADSC);        // ADC start conversions
@@ -196,7 +217,7 @@ void loop()
       if ((count==RANGE)&(edge==true)) break; // in case no FIX
 
       //Serial.println(sensor);   // debug
-      while(!digitalRead(COUNT2)) digitalWrite(LED1, digitalRead(COUNT1));
+      while(!digitalRead(COUNT2)) counter();
     }
   }
   edge=false;
@@ -214,6 +235,10 @@ void loop()
 
   buffer[5] = count-6; // number of half-turns
 
+  buffer[6] = highByte(CPS); // RPM in counts per second
+  buffer[7] = lowByte(CPS); 
+  CPS = 0;
+  
   mav.SendTunnelData(buffer, sizeof(buffer), 3, 0, 0);  
 
   heart++;

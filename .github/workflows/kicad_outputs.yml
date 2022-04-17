@@ -6,7 +6,7 @@ on:
   
 env:
   schema: "hw/sch_pcb/*.kicad_sch"
-  board: "hw/sch_pcb/USTTHUNDERMILLPCB01.kicad_pcb"
+  board: "hw/sch_pcb/USTTHUNDERMILLPCB01.kicad_sch"
   dir: "hw/out"
   kibot: "doc/assets/kibot"
 

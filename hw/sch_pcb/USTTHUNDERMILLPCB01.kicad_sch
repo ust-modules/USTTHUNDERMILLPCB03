@@ -1465,6 +1465,9 @@
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/c147dbf1-bab5-4659-8a55-7af002272a45"
       (reference "C24") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
+    (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/72988fb4-fc5c-4523-9e3f-28b1ee7a0732"
+      (reference "C?") (unit 1) (value "4u7") (footprint "")
+    )
     (path "/63710ae2-0173-429f-930e-1f82ffa3907c"
       (reference "D1") (unit 1) (value "UCLAMP3301H.TCT") (footprint "Diode_SMD:D_SOD-523")
     )
@@ -1497,6 +1500,9 @@
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/ac617ace-fc91-4a3f-9522-53f78319858d"
       (reference "J6") (unit 1) (value "SM06B-GHS-TB") (footprint "Connector_JST:JST_GH_SM06B-GHS-TB_1x06-1MP_P1.25mm_Horizontal")
+    )
+    (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/759badb8-78f9-41f6-99f7-9e1a669adf06"
+      (reference "JP?") (unit 1) (value "SolderJumper_2_Bridged") (footprint "")
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/fefffef2-b902-4577-8ac1-b36192c7493b"
       (reference "L1") (unit 1) (value "10uH - LQH32CN100K23L") (footprint "Inductor_SMD:L_1210_3225Metric")

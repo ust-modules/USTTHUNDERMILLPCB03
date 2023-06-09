@@ -1237,6 +1237,9 @@
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/ce37bc98-7ef5-4dad-847a-3df61b5bb3d3"
       (reference "#PWR029") (unit 1) (value "GND") (footprint "")
     )
+    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/1e2de974-35c6-4d9a-9107-8e9dd6577dbc"
+      (reference "#PWR030") (unit 1) (value "+3V3") (footprint "")
+    )
     (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/4ef879cd-4bee-4936-a852-a223e693d32a"
       (reference "#PWR031") (unit 1) (value "+3V3") (footprint "")
     )
@@ -1278,6 +1281,9 @@
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/a3d459b5-dbcc-41d4-9062-864321999fc3"
       (reference "#PWR044") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/4b3ab7ad-7314-4d94-9c37-20379be74194"
+      (reference "#PWR045") (unit 1) (value "GND") (footprint "")
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/33c3a7d2-ad6c-4221-9117-3fbba9d32dc4"
       (reference "#PWR046") (unit 1) (value "GND") (footprint "")
@@ -1392,12 +1398,6 @@
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/50c7126d-1b29-4f77-8a94-a8a3731152fb"
       (reference "#PWR0106") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/1e2de974-35c6-4d9a-9107-8e9dd6577dbc"
-      (reference "#PWR?") (unit 1) (value "+3V3") (footprint "")
-    )
-    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/4b3ab7ad-7314-4d94-9c37-20379be74194"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
     (path "/cc3b20bd-351c-4e85-a2ad-fede59cafc4c"
       (reference "C1") (unit 1) (value "100nF") (footprint "Capacitor_SMD:C_0603_1608Metric")
@@ -1595,7 +1595,7 @@
       (reference "R25") (unit 1) (value "33R") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/95e5c7d9-5157-4e26-b347-7afccfecbda5"
-      (reference "R?") (unit 1) (value "33R") (footprint "")
+      (reference "R26") (unit 1) (value "33R") (footprint "")
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/a4fcada3-4f52-46a5-ac5b-6f841abab351"
       (reference "SW1") (unit 1) (value "KMT031 NGJ LHS C&K") (footprint "Mlab_SW:KMT031 NGJ LHS C&K")

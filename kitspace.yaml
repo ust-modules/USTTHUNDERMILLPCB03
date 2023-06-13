@@ -1,0 +1,8 @@
+bom: hw/sch_pcb/USTTHUNDERMILLPCB01.kicad_pcb
+color: white
+eda:
+  pcb: hw/sch_pcb/USTTHUNDERMILLPCB01.kicad_pcb
+  type: kicad
+gerbers: hw/cam_profi/
+site: https://github.com/ust-modules/USTTHUNDERMILLPCB01
+summary: THUNDERMILL stator PCB

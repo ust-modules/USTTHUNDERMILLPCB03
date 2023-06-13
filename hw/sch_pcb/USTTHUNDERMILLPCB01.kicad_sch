@@ -1142,6 +1142,9 @@
   )
 
   (symbol_instances
+    (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/4c96c826-e356-48ef-a543-410467886e7e"
+      (reference "#FLG0101") (unit 1) (value "PWR_FLAG") (footprint "")
+    )
     (path "/7daa2024-9eb3-4018-a34f-c0d72456c3e3"
       (reference "#PWR01") (unit 1) (value "+3.3VP") (footprint "")
     )

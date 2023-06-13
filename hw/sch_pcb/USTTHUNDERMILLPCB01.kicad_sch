@@ -1361,6 +1361,9 @@
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/6b7e7685-2177-4718-b0af-b6f2b1a738fc"
       (reference "#PWR073") (unit 1) (value "GND") (footprint "")
     )
+    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/67e59bba-ec75-40a6-b503-ff333d3f0504"
+      (reference "#PWR074") (unit 1) (value "+3V3") (footprint "")
+    )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/77db7258-2814-430d-87c7-764135591d0a"
       (reference "#PWR075") (unit 1) (value "+5V") (footprint "")
     )
@@ -1372,6 +1375,15 @@
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/fc9f7d9c-a8cd-43e5-83f9-f99a39d81910"
       (reference "#PWR078") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/f58790da-d167-47a9-85dc-f9740a01f1d8"
+      (reference "#PWR079") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/3deeeca8-913a-4380-a8d4-f55fa3b6eb17"
+      (reference "#PWR080") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/5c2e00e2-5c57-4281-87fa-7d9d9aad37b6"
+      (reference "#PWR081") (unit 1) (value "+3V3") (footprint "")
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/24529d8c-5e3f-4e94-aa1f-db1dcf48127f"
       (reference "#PWR0101") (unit 1) (value "GND") (footprint "")
@@ -1592,6 +1604,12 @@
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/95e5c7d9-5157-4e26-b347-7afccfecbda5"
       (reference "R26") (unit 1) (value "33R") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
+    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/fc641396-0578-4574-bfd0-8512bf819dc7"
+      (reference "R27") (unit 1) (value "100R") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
+    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/51646a27-ef69-4bb3-bc76-5da36b15851e"
+      (reference "R28") (unit 1) (value "4k7") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/a4fcada3-4f52-46a5-ac5b-6f841abab351"
       (reference "SW1") (unit 1) (value "KMT031 NGJ LHS C&K") (footprint "Mlab_SW:KMT031 NGJ LHS C&K")
     )
@@ -1633,6 +1651,15 @@
     )
     (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/eeb06531-1152-4353-8c57-7adfd6c8d8da"
       (reference "U11") (unit 2) (value "SN74LVC1G14QDCKRQ1") (footprint "Package_TO_SOT_SMD:SOT-353_SC-70-5")
+    )
+    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/7077903c-683f-4cf6-86a7-a3ff2d8de422"
+      (reference "U12") (unit 1) (value "SN74LVC1G14QDCKRQ1") (footprint "Package_TO_SOT_SMD:SOT-353_SC-70-5")
+    )
+    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/b67db66d-c2b2-4818-b434-fe72ecbe1b91"
+      (reference "U12") (unit 2) (value "SN74LVC1G14QDCKRQ1") (footprint "Package_TO_SOT_SMD:SOT-353_SC-70-5")
+    )
+    (path "/c65d3f2e-8a0d-4ec9-900d-154ccfd9e32b/e8729214-6fb8-4193-9e4a-a1e6856e86ba"
+      (reference "U13") (unit 1) (value "VCNT2020") (footprint "Mlab_IO:XDCR_VCNT2020")
     )
     (path "/f1d72f98-8869-41cc-b10e-5c93f9725bfa/af4d7c80-fbbc-46ee-9099-d44a707b5e8a"
       (reference "Y1") (unit 1) (value "16MHz") (footprint "Mlab_XTAL:Crystal SMD CFPX-180")

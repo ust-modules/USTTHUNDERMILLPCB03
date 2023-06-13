@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 31,
+    "active_layer": 37,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_nets": [],
@@ -82,6 +82,18 @@
           "pos_y": 27,
           "size_x": 931,
           "size_y": 1053
+        }
+      },
+      {
+        "name": "USTTHUNDERMILLPCB01.kicad_pcb",
+        "open": false,
+        "window": {
+          "display": 0,
+          "maximized": true,
+          "pos_x": 168,
+          "pos_y": 27,
+          "size_x": 1457,
+          "size_y": 789
         }
       }
     ]

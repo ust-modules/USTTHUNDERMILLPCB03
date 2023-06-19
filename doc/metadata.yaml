@@ -4,16 +4,16 @@ github_repo: USTTHUNDERMILLPCB01
 github_url: https://github.com/ust-modules/USTTHUNDERMILLPCB01
 homepage: false
 images:
-- doc/img/USTTHUNDERMILLPCB01A_bot.png
-- doc/img/USTTHUNDERMILLPCB01A_top.png
 - doc/gen/img/USTTHUNDERMILLPCB01-top.png
 - doc/gen/img/USTTHUNDERMILLPCB01-bottom.png
-- doc/gen/USTTHUNDERMILLPCB01-CPU.svg
-- doc/gen/USTTHUNDERMILLPCB01-schematic.svg
-- doc/gen/USTTHUNDERMILLPCB01-tachometer.svg
-- doc/gen/img/USTTHUNDERMILLPCB01-top.svg
-- hw/cam_profi/docs/USTTHUNDERMILLPCB01B-assembly_page_02.svg
+- doc/img/USTTHUNDERMILLPCB01A_bot.png
+- doc/img/USTTHUNDERMILLPCB01A_top.png
 - hw/cam_profi/docs/USTTHUNDERMILLPCB01B-assembly_page_01.svg
+- hw/cam_profi/docs/USTTHUNDERMILLPCB01B-assembly_page_02.svg
+- doc/gen/USTTHUNDERMILLPCB01-tachometer.svg
+- doc/gen/USTTHUNDERMILLPCB01-schematic.svg
+- doc/gen/USTTHUNDERMILLPCB01-CPU.svg
+- doc/gen/img/USTTHUNDERMILLPCB01-top.svg
 mark: 50
 mod_ibom: hw/cam_profi/ibom/USTTHUNDERMILLPCB01-ibom.html
 mod_scheme: doc/gen/USTTHUNDERMILLPCB01-schematic.pdf

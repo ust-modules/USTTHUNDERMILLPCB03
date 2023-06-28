@@ -1,16 +1,16 @@
 description: THUNDERMILL stator PCB
-github_branch: USTTHUNDERMILLPCB01B
+github_branch: USTTHUNDERMILLPCB01_analogue_power
 github_repo: USTTHUNDERMILLPCB01
 github_url: https://github.com/ust-modules/USTTHUNDERMILLPCB01
 homepage: false
 images:
-- doc/img/USTTHUNDERMILLPCB01A_bot.png
-- doc/img/USTTHUNDERMILLPCB01A_top.png
 - doc/gen/img/USTTHUNDERMILLPCB01-top.png
 - doc/gen/img/USTTHUNDERMILLPCB01-bottom.png
-- doc/gen/USTTHUNDERMILLPCB01-CPU.svg
+- doc/img/USTTHUNDERMILLPCB01A_bot.png
+- doc/img/USTTHUNDERMILLPCB01A_top.png
 - doc/gen/USTTHUNDERMILLPCB01-schematic.svg
 - doc/gen/USTTHUNDERMILLPCB01-tachometer.svg
+- doc/gen/USTTHUNDERMILLPCB01-CPU.svg
 - doc/gen/img/USTTHUNDERMILLPCB01-top.svg
 - hw/cam_profi/docs/USTTHUNDERMILLPCB01B-assembly_page_02.svg
 - hw/cam_profi/docs/USTTHUNDERMILLPCB01B-assembly_page_01.svg

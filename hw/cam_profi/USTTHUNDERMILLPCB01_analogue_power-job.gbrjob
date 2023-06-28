@@ -5,7 +5,7 @@
       "Application": "Pcbnew",
       "Version": "7.0.5.1-1-g8f565ef7f0-dirty-deb11"
     },
-    "CreationDate": "2023-06-28T16:47:18+00:00"
+    "CreationDate": "2023-06-28T22:36:54+00:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
@@ -103,7 +103,7 @@
   "MaterialStackup": [
     {
       "Type": "Legend",
-      "Color": "White",
+      "Color": "Black",
       "Name": "Top Silk Screen"
     },
     {
@@ -112,7 +112,7 @@
     },
     {
       "Type": "SolderMask",
-      "Color": "Green",
+      "Color": "White",
       "Thickness": 0.01,
       "Name": "Top Solder Mask"
     },
@@ -159,7 +159,7 @@
     },
     {
       "Type": "SolderMask",
-      "Color": "Green",
+      "Color": "White",
       "Thickness": 0.01,
       "Name": "Bottom Solder Mask"
     },
@@ -169,7 +169,7 @@
     },
     {
       "Type": "Legend",
-      "Color": "White",
+      "Color": "Black",
       "Name": "Bottom Silk Screen"
     }
   ]

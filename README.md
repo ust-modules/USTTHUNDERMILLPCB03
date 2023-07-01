@@ -4,6 +4,6 @@ The PCB is part of [Electric field mill](https://github.com/UniversalScientificT
 
 
 <p float="left">
-  <img src="./doc/gen/img/USTTHUNDERMILLPCB01-bottom.png" width="49%"/>
-  <img src="./doc/gen/img/USTTHUNDERMILLPCB01-top.png" width="49%"/> 
+  <img src="./doc/gen/img/USTTHUNDERMILLPCB03-bottom.png" width="49%"/>
+  <img src="./doc/gen/img/USTTHUNDERMILLPCB03-top.png" width="49%"/> 
 </p>
